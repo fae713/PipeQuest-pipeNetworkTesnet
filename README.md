@@ -56,7 +56,6 @@ sudo apt install -y libssl-dev ca-certificates
 ```
 su -
 ```
-
 5. Create directories, run the codes one by one
 
 ```
@@ -69,11 +68,16 @@ sudo mkdir -p /opt/popcache/logs
 ```
 cd /opt/popcache
 ```
-
-7. Then do the following commands below in your Ubuntu one after the other.
+7. Open port
+   ```
+   sudo ufw allow 80/tcp
+   sudo ufw allow 443/tcp
+   sudo ufw reload
+   ```
+8. Then do the following commands below in your Ubuntu one after the other.
 
 Note: Copy the full code including the '.' for this command
-
+Remember to ensure it's the correct path of the file you downloaded.
 ```
 mv /mnt/c/Users/DELL/Downloads/pop-v0.3.0-linux-x64.tar.gz .
 ```
@@ -86,7 +90,7 @@ sudo tar -xzf pop-v0.3.0-linux-*.tar.gz
 chmod +x /opt/popcache/pop
 ```
 
-8. Setup Config File
+9. Setup Config File
 
 ```
 nano config.json
@@ -127,10 +131,11 @@ nano config.json
 ```
 
 When you're done filling the correct details, do this to save: Ctrl+O, hit enter, then Ctrl+X
-Setup Configuration according to you
 
-* `pop-location`: your location --> Command to Check --> `realpath --relative-to=/usr/share/zoneinfo /etc/localtime`
-* `website`: Use Github or X
+
+* For `pop-location`: use this to check --> `realpath --relative-to=/usr/share/zoneinfo /etc/localtime`
+
+* For `website`: Use Github or X
 
 ### 3. Create System Configuration
 
